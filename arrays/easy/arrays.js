@@ -3,7 +3,7 @@
 // Problem 1 - Two Number Sum
 
 //Solution 1 (Nested For Loop) -
-// 0(n^2) time | 0(1) space
+// O(n^2) time | O(1) space
 
 // function twoNumberSum(array, targetSum) {
 //   // Write your code here.
@@ -20,7 +20,7 @@
 // }
 
 //Solution 2 (Hash Map)
-// 0(n) time | 0(n) space
+// O(n) time | O(n) space
 
 function twoNumberSum(array, targetSum) {
   // Write your code here.
@@ -38,7 +38,7 @@ function twoNumberSum(array, targetSum) {
 }
 
 //Solution 3 (Two-Pointer)
-// 0(nlog(n)) time | 0(1) space
+// O(nlog(n)) time | O(1) space
 
 // function twoNumberSum(array, targetSum) {
 //   // Write your code here.
@@ -64,7 +64,7 @@ function twoNumberSum(array, targetSum) {
 // Problem 2 - Validate SubSequence
 
 // Solution 1 - (While Loop)
-// 0(n) time | 0(n) space
+// O(n) time | O(n) space
 
 // function isValidSubsequence(array, sequence) {
 //   // Write your code here.
@@ -80,17 +80,57 @@ function twoNumberSum(array, targetSum) {
 // }
 
 // Solution 2 (For Loop)
-// 0(n) time | 0(n) space
+// O(n) time | O(n) space
 
-// function isValidSubsequence(array, sequence) {
-//   // Write your code here.
-//   let seqIdx = 0;
-//   for (let i = 0; i < array.length; i++) {
-//     let currentNum = array[i];
-//     if (seqIdx === sequence.length) break;
-//     if (sequence[seqIdx] === currentNum) seqIdx++;
-//   }
-//   return seqIdx === sequence.length;
-// }
+function isValidSubsequence(array, sequence) {
+  // Write your code here.
+  let seqIdx = 0;
+  for (let i = 0; i < array.length; i++) {
+    let currentNum = array[i];
+    if (seqIdx === sequence.length) break;
+    if (sequence[seqIdx] === currentNum) seqIdx++;
+  }
+  return seqIdx === sequence.length;
+}
 
 /* <--------------------------------------------> */
+
+// Problem 3 - Sorted Sqaured Array
+
+// Solution 1 - (Brute Force)
+// O(nlogn) time | O(n) space
+
+// function sortedSquaredArray(array) {
+
+//   let result = [];
+//   for (let i = 0; i < array.length; i++) {
+//     const currentNum = array[i];
+//     const squaredNum = currentNum * currentNum;
+//     result.push(squaredNum);
+//   }
+//   return result.sort((a, b) => a - b);
+// }
+
+// Solution 2 - (Two Pointer / Absolute Values)
+// O(n) time | O(n) space
+
+function sortedSquaredArray(array) {
+  // Write your code here.
+  let sortedSquares = new Array(array.length).fill(0);
+  let left = 0;
+  let right = array.length - 1;
+
+  for (let i = array.length - 1; i >= 0; i--) {
+    let smallerValue = array[left];
+    let largerValue = array[right];
+
+    if (Math.abs(smallerValue) > Math.abs(largerValue)) {
+      sortedSquares[i] = smallerValue * smallerValue;
+      smallerValue++;
+    } else {
+      sortedSquares[i] = largerValue * largerValue;
+      largerValue--;
+    }
+  }
+  return sortedSquares;
+}
