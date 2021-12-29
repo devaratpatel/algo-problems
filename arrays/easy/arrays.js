@@ -61,9 +61,10 @@ function twoNumberSum(array, targetSum) {
 
 /* <--------------------------------------------> */
 
-// Problem 2 - Validate Sequence
+// Problem 2 - Validate SubSequence
 
-// Solution 1
+// Solution 1 - (While Loop)
+// 0(n) time | 0(n) space
 
 // function isValidSubsequence(array, sequence) {
 //   // Write your code here.
@@ -78,7 +79,8 @@ function twoNumberSum(array, targetSum) {
 //   return seqIdx === sequence.length;
 // }
 
-// Solution 2
+// Solution 2 (For Loop)
+// 0(n) time | 0(n) space
 
 // function isValidSubsequence(array, sequence) {
 //   // Write your code here.
@@ -90,18 +92,5 @@ function twoNumberSum(array, targetSum) {
 //   }
 //   return seqIdx === sequence.length;
 // }
-
-// Solution 3
-
-function isValidSubsequence(arr, sequence) {
-  // Write your code here.
-  let seqIdx = 0;
-
-  for (let i = 0; i < arr.length; i++) {
-    if (seqIdx === sequence.length) break;
-    if (sequence[seqIdx] === arr[i]) seqIdx++;
-  }
-  return seqIdx === sequence.length;
-}
 
 /* <--------------------------------------------> */
