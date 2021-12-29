@@ -2,7 +2,8 @@
 
 // Problem 1 - Two Number Sum
 
-//Solution 1 (Nested For Loop)
+//Solution 1 (Nested For Loop) -
+// 0(n^2) time | 0(1) space
 
 // function twoNumberSum(array, targetSum) {
 //   // Write your code here.
@@ -19,42 +20,44 @@
 // }
 
 //Solution 2 (Hash Map)
-
-// function twoNumberSum(array, targetSum) {
-//   // Write your code here.
-//   const nums = {};
-//   for (let i = 0; i < array.length; i++) {
-//     let currentNum = array[i];
-//     const potentialMatch = targetSum - currentNum;
-//     if (potentialMatch in nums) {
-//       return [potentialMatch, currentNum];
-//     } else {
-//       nums[currentNum] = true;
-//     }
-//   }
-//   return [];
-// }
-
-//Solution 3
+// 0(n) time | 0(n) space
 
 function twoNumberSum(array, targetSum) {
   // Write your code here.
-  array.sort((a, b) => a - b);
-  let left = 0;
-  let right = array.length - 1;
-
-  while (left < right) {
-    const currentSum = array[left] + array[right];
-    if (currentSum === targetSum) {
-      return [array[left], array[right]];
-    } else if (currentSum < targetSum) {
-      left++;
-    } else if (currentSum > targetSum) {
-      right--;
+  const nums = {};
+  for (let i = 0; i < array.length; i++) {
+    let currentNum = array[i];
+    const potentialMatch = targetSum - currentNum;
+    if (potentialMatch in nums) {
+      return [potentialMatch, currentNum];
+    } else {
+      nums[currentNum] = true;
     }
   }
   return [];
 }
+
+//Solution 3 (Two-Pointer)
+// 0(nlog(n)) time | 0(1) space
+
+// function twoNumberSum(array, targetSum) {
+//   // Write your code here.
+//   array.sort((a, b) => a - b);
+//   let left = 0;
+//   let right = array.length - 1;
+
+//   while (left < right) {
+//     const currentSum = array[left] + array[right];
+//     if (currentSum === targetSum) {
+//       return [array[left], array[right]];
+//     } else if (currentSum < targetSum) {
+//       left++;
+//     } else if (currentSum > targetSum) {
+//       right--;
+//     }
+//   }
+//   return [];
+// }
 
 /* <--------------------------------------------> */
 
