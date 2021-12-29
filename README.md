@@ -1,3 +1,1 @@
-# algo-problems
-
-Algorithms Practice 
+# Algo - Practice
